@@ -1,21 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\User;
+use App\Models\DataFakultas;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class DataFakultasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-        $users = User::orderBy('created_at', "DESC")->get();
-
-        return view('admin.user.index',compact('users'));
+        $fks = DataFakultas::orderBy('created_at', "DESC")->get();
+        return view('admin.fakultas.index',compact('fks'));
     }
 
     /**
@@ -23,7 +20,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        return view('admin.fakultas.create');
     }
 
     /**
@@ -31,11 +28,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        DataFakultas::create($request->all());
 
-        User::create($request->all());
-
-        return redirect()->route('admin-index')->with('success','User Berhasil Ditambahkan');
-
+        return redirect()->route('afk-index')->with('success','Mata Kuliah Berhasil Ditambahkan');
     }
 
     /**
@@ -49,11 +44,11 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
-        $user = User::findOrFail($id);
+        $fk = DataFakultas::findOrFail($id);
         
-        return view('admin.user.edit' , compact('user'));
+        return view('admin.fakultas.edit' , compact('fk'));
     }
 
     /**
@@ -61,13 +56,13 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user = User::findOrFail($id);
+        $fk = DataFakultas::findOrFail($id);
     
        
-        $user->update($request->all());
+        $fk->update($request->all());
 
         
-        return redirect()->route('admin-index')->with('success','User Berhasil Diupdate');
+        return redirect()->route('afk-index')->with('success','User Berhasil Diupdate');
     }
 
     /**
@@ -75,10 +70,10 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $user = User::findOrFail($id);
+        $fk = DataFakultas::findOrFail($id);
 
-        $user->delete();
+        $fk->delete();
 
-        return redirect()->route('admin-index')->with('success','User Berhasil Dihapus');
+        return redirect()->route('afk-index')->with('success','User Berhasil Dihapus');
     }
 }

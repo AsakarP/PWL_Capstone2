@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('polling_details', function (Blueprint $table) {
+        Schema::create('data_fakultas', function (Blueprint $table) {
             $table->id();
+            $table->string('id_fakultas')->unique()->default('1');
+            $table->string('nama_fakultas');
+            $table->integer('dekan');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('polling_details');
+        Schema::dropIfExists('data_fakultas');
     }
 };

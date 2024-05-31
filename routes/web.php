@@ -1,11 +1,12 @@
 <?php
-
+use App\Http\Controllers\DataFakultasController;
 use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\PollingController;
 use App\Http\Controllers\PollingDetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\Matakuliah;
+use App\Models\DataFakultas;
 use App\Models\PollingDetail;
 use Illuminate\Support\Facades\Route;
 
@@ -35,12 +36,21 @@ Route::middleware('auth')->group(function () {
 
 //  Admin
 Route::middleware(['auth', 'cekRole:1'])->group(function () {
+    // Data User
     Route::get('/admin', [UserController::class, 'index'])->name('admin-index');
     Route::post('/admin/create', [UserController::class, 'store'])->name('admin-store');
     Route::get('/admin/create', [UserController::class, 'create'])->name('admin-create');
     Route::patch('/admin/edit/{id}', [UserController::class, 'update'])->name('admin-update');
     Route::get('/admin/edit/{id}', [UserController::class, 'edit'])->name('admin-edit');
     Route::get('/admin/delete/{id}', [UserController::class, 'destroy'])->name('admin-delete');
+
+    // Data Fakultas
+    Route::get('/admin/fakultas', [DataFakultasController::class, 'index'])->name('afk-index');
+    Route::post('/admin/fakultas/create', [DataFakultasController::class, 'store'])->name('afk-store');
+    Route::get('/admin/fakultas/create', [DataFakultasController::class, 'create'])->name('afk-create');
+    Route::patch('/admin/fakultas/edit/{id}', [DataFakultasController::class, 'update'])->name('afk-update');
+    Route::get('/admin/fakultas/edit/{id}', [DataFakultasController::class, 'edit'])->name('afk-edit');
+    Route::get('/admin/fakultas/delete/{id}', [DataFakultasController::class, 'destroy'])->name('afk-delete');
 });
 
 // Prodi

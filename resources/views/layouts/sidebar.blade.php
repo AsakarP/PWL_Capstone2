@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link">
 
-        <span class="brand-text font-weight-light">Polling</span>
+        <span class="brand-text font-weight-light">Web Pengajuan Beasiswa</span>
     </a>
 
     <!-- Sidebar -->
@@ -41,65 +41,51 @@
                         </p>
                     </a>
                 </li>
-                @if(Auth::user()->kode_role == 2)
-                <li class="nav-item">
-                    {{-- <a href="{{ route('kk-list') }}" class="nav-link"> --}}
-                        
-                    <a href="{{ route('mk-index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Matakuliah
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    {{-- <a href="{{ route('kk-list') }}" class="nav-link"> --}}
-                        
-                    <a href="{{ route('poll-index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-building"></i>
-                        <p>
-                            Polling
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    {{-- <a href="{{ route('kk-list') }}" class="nav-link"> --}}
-                        
-                    <a href="{{ route('dashboard') }}" class="nav-link">
-                        <i class="nav-icon fas fa-building"></i>
-                        <p>
-                            Hasil
-                        </p>
-                    </a>
-                </li>
-                @endif
-                @if(Auth::user()->kode_role == 3)
-                    <li class="nav-item">
-                        {{-- <a href="{{ route('ctz-list') }}" class="nav-link"> --}}
-                        <a href="{{ route('mahasiswa-index') }}" class="nav-link">
-                            <i class="nav-icon far fa-id-card"></i>
-                            <p>
-                                Voting
-                            </p>
-                        </a>
-                    </li>
-                @endif
-                @if(Auth::user()->kode_role == 1)
+                @if(Auth::user()->role == 1)
+                    {{-- Link ke Data User --}}
                     <li class="nav-item">
                         <a href="{{ route('admin-index') }}" class="nav-link">
-                        {{-- <a href="/adminindex" class="nav-link"> --}}
                             <i class="nav-icon far fa-user"></i>
                             <p>
-                                Roles
+                                Data User
+                            </p>
+                        </a>
+                    </li>
+                    {{-- Link ke Data Fakultas --}}
+                    <li class="nav-item">
+                        <a href="{{ route('afk-index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-building"></i>
+                            <p>
+                                Data Fakultas
+                            </p>
+                        </a>
+                    </li>
+                    {{-- Link ke Data Prodi --}}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-graduation-cap"></i>
+                            <p>
+                                Data Prodi
+                            </p>
+                        </a>
+                    </li>
+                    {{-- Link ke Data Beasiswa Internal --}}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-newspaper"></i>
+                            <p>
+                                Data Beasiswa Internal
                             </p>
                         </a>
                     </li>
                 @endif
+                {{-- Link untuk Logout --}}
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();">
-                            <i class="nav-icon fa fa-sign-out"></i>Logout
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();" class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>Logout</p>
                         </a>
                     </form>
                 </li>

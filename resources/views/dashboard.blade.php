@@ -7,14 +7,17 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        @if(Auth::user()->kode_role == 1)
-                            <h1 class="m-0">Selamat Datang Admin </h1>
+                        @if(Auth::user()->role == 1)
+                            <h1 class="m-0">Selamat Datang Admin-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
                         @endif
-                        @if(Auth::user()->kode_role == 2)
-                            <h1 class="m-0">Selamat Datang Prodi </h1>
+                        @if(Auth::user()->role == 2)
+                            <h1 class="m-0">Selamat Datang Prodi-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
                         @endif
-                        @if(Auth::user()->kode_role == 3)
-                        <h1 class="m-0">Selamat Datang Mahasiswa </h1>
+                        @if(Auth::user()->role == 3)
+                        <h1 class="m-0">Selamat Datang Fakultas-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
+                        @endif
+                        @if(Auth::user()->role == 4)
+                        <h1 class="m-0">Selamat Datang Mahasiswa-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
                         @endif
                     </div><!-- /.col -->
                     <div class="col-sm-6">
@@ -31,7 +34,7 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                
+
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content -->

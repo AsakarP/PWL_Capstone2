@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data User</h1>
+                        <h1 class="m-0">Data Fakultas</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Users</li>
+                            <li class="breadcrumb-item active">Fakultas</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -31,42 +31,29 @@
                     @endif
 
                     <div class="card-header">
-                        <a href="{{ route('admin-create') }}" role="button" class="btn btn-success">Tambah User</a>
-                        {{-- <a href="{{ route('admin-index') }}" role="button" class="btn btn-success">Tambah Role</a> --}}
+                        <a href="{{ route('afk-create') }}" role="button" class="btn btn-success">Tambah Fakultas</a>
                     </div>
                     <div class="card-body">
                         <table id="table-kk" class="table table-striped">
                             <thead>
                             <tr>
-                                <th>NRP</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>Kode Role</th>
-                                <th>Aksi</th>
+                                <th>No</th>
+                                <th>ID Fakultas</th>
+                                <th>Nama Fakultas</th>
+                                <th>Dekan</th>
                             </tr>
                             </thead>
                             <tbody>
 
-
-                            {{-- @foreach($kks as $kk)
-                                <tr>
-                                    <td>{{ $kk->no }}</td>
-                                    <td>{{ $kk->nama_kepala }}</td>
-                                    <td>
-                                        <a href="{{ route('kk-edit', ['kartuKeluarga' => $kk->no]) }}" class="btn btn-warning" role="button"><i class="fas fa-edit"></i></a>
-                                        <a href="{{ route('kk-delete', ['kartuKeluarga' => $kk->no]) }}" class="btn btn-danger del-button" role="button"><i class="fas fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach --}}
-                        @foreach ($users as $user )
+                        @foreach ($fks as $fk )
                         <tr>
-                            <td>{{ $user->nrp }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email}}</td>
-                            <td>{{ $user->kode_role }}</td>
+                            <td>{{ $fk->id }}</td>
+                            <td>{{ $fk->id_fakultas}}</td>
+                            <td>{{ $fk->nama_fakultas}}</td>
+                            <td>{{ $fk->dekan}}</td>
                             <td>
-                                <a href="{{ route('admin-edit', $user->id) }}" class="btn btn-warning" role="button"><i class="fas fa-edit"></i></a>
-                                <a href="{{ route('admin-delete', $user->id) }}" class="btn btn-danger del-button" role="button"><i class="fas fa-trash"></i></a>
+                                <a href="{{ route('admin-edit', $fk->id) }}" class="btn btn-warning" role="button"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('admin-delete', $fk->id) }}" class="btn btn-danger del-button" role="button"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
