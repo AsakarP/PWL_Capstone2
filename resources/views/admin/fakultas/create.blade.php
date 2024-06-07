@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label for="no-kk">ID Fakultas</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: 2272045" name="nrp" required autofocus
+                                       placeholder="Contoh: 123" name="nrp" required autofocus
                                        maxlength="16">
                             </div>
                             <div class="form-group">

@@ -2,26 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Matakuliah;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
-use App\Models\Polling;
-use Illuminate\Support\Facades\View;
 
-class PollingDetailController extends Controller
+class ProdiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $polls = Polling::orderBy('created_at', "DESC")->get();
-        return view('mahasiswa.index',compact('polls'));
-    }
-
-    public function indexmk()
-    {
-        $mks = Matakuliah::orderBy('created_at', "DESC")->get();
-        return view('mahasiswa.indexmk',compact('mks'));
+        //
     }
 
     /**
@@ -43,7 +34,7 @@ class PollingDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Prodi $prodi)
     {
         //
     }
@@ -51,7 +42,7 @@ class PollingDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Prodi $prodi)
     {
         //
     }
@@ -59,7 +50,7 @@ class PollingDetailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Prodi $prodi)
     {
         //
     }
@@ -67,7 +58,7 @@ class PollingDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Prodi $prodi)
     {
         //
     }

@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Edit Role User</h1>
+                        <h1 class="m-0">Create Data Program Studi</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Roles</li>
+                            <li class="breadcrumb-item active">Program Studi</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -26,43 +26,40 @@
                 <div class="card p-4">
                     <div class="card-body">
 
-                    @if($errors->any())
-                        <div class="alert alert-danger">
-                            {{ implode('', $errors->all(':message')) }}
-                        </div>
-                    @endif
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                {{ implode('', $errors->all(':message')) }}
+                            </div>
+                        @endif
 
-                        <form method="Post" action="{{ route('admin-update', ['id' => $user->id]) }}">
+                        <form method="post" action="{{ route('aps-store') }}">
                             @csrf
-                            @method('patch')
                             <div class="form-group">
-                                <label for="no-kk">NRP</label>
-                                <input type="text" class="form-control" 
-                                       placeholder="Contoh: 2272045" name="nrp" required autofocus
-                                       maxlength="16" value="{{ $user->nrp }}">
+                                <label>Fakultas</label>
+                                <select name="fakultas" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                    <option selected disabled>Select Fakultas</option>
+                                    @foreach($fakultas as $fakultasItem)
+                                        <option value="{{ $fakultasItem->idFakultas }}">{{ $fakultasItem->nama }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label>Nama</label>
+                                <label for="no-kk">Program Studi</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: John Doe" name="name" required autofocus
-                                       maxlength="16" value="{{ $user->name }}">
+                                       placeholder="Contoh: Desain interior" name="prodi" required autofocus
+                                       maxlength="100" value="{{ $ps->prodi }}">
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
+                                <label>Akreditasi</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: 2272045@maranatha.ac.id" name="email" required autofocus
-                                       maxlength="32" value="{{ $user->email }}">
+                                       placeholder="Contoh: A" name="Akreditasi" required 
+                                       maxlength="1" value="{{ $ps->akreditasi }}">
                             </div>
                             <div class="form-group">
-                                <label>Kode Role</label>
+                                <label>Rektor</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="1 = Admin // 2 = Fakultas // 3 = Prodi // 3 = Mahasiswa" name="role" required autofocus
-                                       maxlength="1" value="{{ $user->role }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="text" class="form-control"  placeholder="Contoh: 12345678"
-                                       required name="password" minlength="8">
+                                       placeholder="Contoh: Alan Smith" name="name" required 
+                                       maxlength="120" value="{{ $ps->rektor }}">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Fakultas</h1>
+                        <h1 class="m-0">Data Beasiswa</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Fakultas</li>
+                            <li class="breadcrumb-item active">Data Beasiswa</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -31,33 +31,33 @@
                     @endif
 
                     <div class="card-header">
-                        <a href="{{ route('fak-create') }}" role="button" class="btn btn-success">Tambah Fakultas</a>
+                        <a href="{{ route('ab-create') }}" role="button" class="btn btn-success">Tambah Beasiswa</a>
                     </div>
                     <div class="card-body">
-                        <table id="table-dak" class="table table-striped">
+                        <table id="table-bea" class="table table-striped">
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>ID</th>
-                                <th>Nama Fakultas</th>
-                                <th>Dekan</th>
+                                <th>Nama Beasiswa</th>
+                                <th>Jenis Beasiswa</th>
+                                <th>Periode Mulai</th>
+                                <th>Periode Tutup</th>
                             </tr>
                             </thead>
                             <tbody>
-                        @foreach ($faks as $fak )
+                        @foreach ($beas as $bea)
                         <tr>
-                            <td>{{ $fak->id }}</td>
-                            <td>{{ $fak->id_fakultas }}</td>
-                            <td>{{ $fak->nama_fakultas }}</td>
-                            <td>{{ $fak->dekan}}</td>
+                            <td>{{ $bea->idBeasiswa }}</td>
+                            <td>{{ $bea->namaBeasiswa }}</td>
+                            <td>{{ $bea->jenisBeasiswa }}</td>
+                            <td>{{ $bea->periodeMulai }}</td>
+                            <td>{{ $bea->periodeTutup }}</td>
                             <td>
-                                <a href="{{ route('fak-edit', $user->id) }}" class="btn btn-warning" role="button"><i class="fas fa-edit"></i></a>
-                                <a href="{{ route('fak-delete', $user->id) }}" class="btn btn-danger del-button" role="button"><i class="fas fa-trash"></i></a>
+                                <a href="{{ route('ab-edit', $bea->idBeasiswa) }}" class="btn btn-warning" role="button"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('ab-delete', $bea->idBeasiswa) }}" class="btn btn-danger del-button" role="button"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
-
-
                             </tbody>
                         </table>
                     </div>

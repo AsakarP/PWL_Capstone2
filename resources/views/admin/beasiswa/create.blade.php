@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Create Role User</h1>
+                        <h1 class="m-0">Create Beasiswa</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Roles</li>
+                            <li class="breadcrumb-item"><a href="#">Create</a></li>
+                            <li class="breadcrumb-item active">Beasiswa</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -25,47 +25,39 @@
             <div class="container-fluid">
                 <div class="card p-4">
                     <div class="card-body">
-
                         @if($errors->any())
                             <div class="alert alert-danger">
                                 {{ implode('', $errors->all(':message')) }}
                             </div>
                         @endif
 
-                        <form method="post" action="{{ route('admin-store') }}">
+                        <form method="post" action="{{ route('ab-store') }}">
                             @csrf
                             <div class="form-group">
-                                <label for="no-kk">NRP</label>
+                                <label>Nama Beasiswa</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: 2272045" name="nrp" required autofocus
+                                       placeholder="Contoh: Beasiswa ABC" name="namaBeasiswa" required autofocus
                                        maxlength="16">
                             </div>
                             <div class="form-group">
-                                <label>Nama</label>
-                                <input type="text" class="form-control" 
-                                       placeholder="Contoh: John Doe" name="name" required autofocus
-                                       maxlength="16">
+                                <label>Jenis Beasiswa</label>
+                                <select name="jenisBeasiswa" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                  <option selected="selected" value="prestasi">Prestasi</option>
+                                  <option value="ekonomi">Ekonomi</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" class="form-control" 
-                                       placeholder="Contoh: 2272045@maranatha.ac.id" name="email" required autofocus
-                                       maxlength="32">
+                                <label>Periode Mulai</label>
+                                <input type="date" class="form-control" 
+                                    name="periodeMulai" required >
                             </div>
                             <div class="form-group">
-                                <label>Kode Role</label>
-                                <input type="text" class="form-control" 
-                                       placeholder="1 = Admin // 2 = Fakultas // 3 Prodi //4 = Mahasiswa" name="role" required autofocus
-                                       maxlength="1">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="text" class="form-control"  placeholder="Contoh: 12345678"
-                                       required name="password" minlength="8">
+                                <label>Periode Tutup</label>
+                                <input type="date" class="form-control" 
+                                    name="periodeTutup" required >
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
-
                     </div>
                 </div>
             </div><!-- /.container-fluid -->

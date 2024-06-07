@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Edit Role User</h1>
+                        <h1 class="m-0">Edit Program Studi</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Roles</li>
+                            <li class="breadcrumb-item active">Program Studi</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -32,37 +32,26 @@
                         </div>
                     @endif
 
-                        <form method="Post" action="{{ route('admin-update', ['id' => $user->id]) }}">
+                        <form method="Post" action="{{ route('aps-update', ['id' => $ps->id]) }}">
                             @csrf
                             @method('patch')
                             <div class="form-group">
-                                <label for="no-kk">NRP</label>
+                                <label for="no-kk">Program Studi</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: 2272045" name="nrp" required autofocus
-                                       maxlength="16" value="{{ $user->nrp }}">
+                                       placeholder="Contoh: Desain interior" name="prodi" required autofocus
+                                       maxlength="100" value="{{ $ps->prodi }}">
                             </div>
                             <div class="form-group">
-                                <label>Nama</label>
+                                <label>Akreditasi</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: John Doe" name="name" required autofocus
-                                       maxlength="16" value="{{ $user->name }}">
+                                       placeholder="Contoh: A" name="Akreditasi" required 
+                                       maxlength="1" value="{{ $ps->akreditasi }}">
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
+                                <label>Rektor</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: 2272045@maranatha.ac.id" name="email" required autofocus
-                                       maxlength="32" value="{{ $user->email }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Kode Role</label>
-                                <input type="text" class="form-control" 
-                                       placeholder="1 = Admin // 2 = Fakultas // 3 = Prodi // 3 = Mahasiswa" name="role" required autofocus
-                                       maxlength="1" value="{{ $user->role }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="text" class="form-control"  placeholder="Contoh: 12345678"
-                                       required name="password" minlength="8">
+                                       placeholder="Contoh: Alan Smith" name="name" required 
+                                       maxlength="120" value="{{ $ps->rektor }}">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

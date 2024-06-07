@@ -41,6 +41,8 @@
                         </p>
                     </a>
                 </li>
+
+                {{-- Role Admin --}}
                 @if(Auth::user()->role == 1)
                     {{-- Link ke Data User --}}
                     <li class="nav-item">
@@ -71,7 +73,7 @@
                     </li>
                     {{-- Link ke Data Beasiswa Internal --}}
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href={{ route('ab-index') }} class="nav-link">
                             <i class="nav-icon fas fa-newspaper"></i>
                             <p>
                                 Data Beasiswa Internal
@@ -79,6 +81,20 @@
                         </a>
                     </li>
                 @endif
+
+                {{-- Role Mahasiswa --}}
+                @if(Auth::user()->role == 4)
+                    {{-- Link ke Data Pengajuan Beasiswa --}}
+                    <li class="nav-item">
+                        <a href={{ route('mab-index') }} class="nav-link">
+                            <i class="nav-icon fas fa-newspaper"></i>
+                            <p>
+                                Pengajuan Beasiswa
+                            </p>
+                        </a>
+                    </li>
+                @endif
+
                 {{-- Link untuk Logout --}}
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
