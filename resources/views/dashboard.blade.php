@@ -11,10 +11,10 @@
                             <h1 class="m-0">Selamat Datang Admin-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
                         @endif
                         @if(Auth::user()->role == 2)
-                            <h1 class="m-0">Selamat Datang Prodi-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
+                            <h1 class="m-0">Selamat Datang Fakultas-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
                         @endif
                         @if(Auth::user()->role == 3)
-                        <h1 class="m-0">Selamat Datang Fakultas-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
+                        <h1 class="m-0">Selamat Datang Prodi-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
                         @endif
                         @if(Auth::user()->role == 4)
                         <h1 class="m-0">Selamat Datang Mahasiswa-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>

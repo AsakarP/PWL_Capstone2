@@ -42,8 +42,9 @@
                             <div class="form-group">
                                 <label>Jenis Beasiswa</label>
                                 <select name="jenisBeasiswa" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                  <option selected="selected" value="prestasi">Prestasi</option>
-                                  <option value="ekonomi">Ekonomi</option>
+                                  <option selected="selected" value="akademik">Akademik</option>
+                                  <option value="non-akademik">non-Akademik</option>
+                                  <option value="el">EL</option>
                                 </select>
                             </div>
                             <div class="form-group">

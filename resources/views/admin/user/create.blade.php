@@ -55,12 +55,12 @@
                             <div class="form-group">
                                 <label>Kode Role</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="1 = Admin // 2 = Fakultas // 3 Prodi //4 = Mahasiswa" name="role" required autofocus
+                                       placeholder="1 = Admin // 2 = Fakultas // 3 = Prodi // 4 = Mahasiswa" name="role" required autofocus
                                        maxlength="1">
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="text" class="form-control"  placeholder="Contoh: 12345678"
+                                <input type="password" class="form-control"  placeholder="Contoh: 12345678"
                                        required name="password" minlength="8">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
