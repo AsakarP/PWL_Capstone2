@@ -29,10 +29,8 @@ class BeasiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'namaBeasiswa' => 'required|string|max:16',
+            'namaBeasiswa' => 'required|string|max:25',
             'jenisBeasiswa' => 'required|string',
-            'periodeMulai' => 'required|date|before_or_equal:periodeTutup',
-            'periodeTutup' => 'required|date|after_or_equal:periodeMulai',
         ]);
     
         Beasiswa::create($request->all());
@@ -71,10 +69,8 @@ class BeasiswaController extends Controller
     public function update(Request $request, string $idBeasiswa)
     {
         $request->validate([
-            'namaBeasiswa' => 'required|string|max:16',
+            'namaBeasiswa' => 'required|string|max:25',
             'jenisBeasiswa' => 'required|string',
-            'periodeMulai' => 'required|date|before_or_equal:periodeTutup',
-            'periodeTutup' => 'required|date|after_or_equal:periodeMulai',
         ]);
     
         $bea = Beasiswa::findOrFail($idBeasiswa);

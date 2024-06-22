@@ -3,13 +3,9 @@ use App\Http\Controllers\BeasiswaController;
 use App\Http\Controllers\DataFakultasController;
 use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\PollingController;
-use App\Http\Controllers\PollingDetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
-use App\Models\Matakuliah;
-use App\Models\DataFakultas;
-use App\Models\PollingDetail;
+use App\Http\Controllers\FakultasController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -63,8 +59,18 @@ Route::middleware(['auth', 'cekRole:1'])->group(function () {
     Route::get('/admin/Beasiswa/delete/{idBeasiswa}', [BeasiswaController::class, 'destroy'])->name('ab-delete');
 });
 
-// Prodi
+// Fakultas
 Route::middleware(['auth', 'cekRole:2'])->group(function () {
+    Route::get('/fakultas', [FakultasController::class, 'index'])->name('fak-index');
+    Route::post('/fakultas/create', [FakultasController::class, 'store'])->name('fak-store');
+    Route::get('/fakultas/create', [FakultasController::class, 'create'])->name('fak-create');
+    Route::patch('/fakultas/edit/{id}', [FakultasController::class, 'update'])->name('fak-update');
+    Route::get('/fakultas/edit/{id}', [FakultasController::class, 'edit'])->name('fak-edit');
+    Route::get('/fakultas/delete/{id}', [FakultasController::class, 'destroy'])->name('fak-delete');
+});
+
+// Prodi
+Route::middleware(['auth', 'cekRole:3'])->group(function () {
 
     // MataKuliah
     Route::get('/prodi/matakuliah', [MatakuliahController::class, 'index'])->name('mk-index');
@@ -74,11 +80,6 @@ Route::middleware(['auth', 'cekRole:2'])->group(function () {
     Route::get('/prodi/edit/{id}', [MatakuliahController::class, 'edit'])->name('mk-edit');
     Route::get('/prodi/delete/{id}', [MatakuliahController::class, 'destroy'])->name('mk-delete');
 
-});
-
-// Fakultas
-Route::middleware(['auth', 'cekRole:3'])->group(function () {
-    
 });
 
 // Mahasiwa

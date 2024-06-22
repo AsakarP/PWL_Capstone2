@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class FakultasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-        $users = User::orderBy('created_at', "ASC")->get();
-
-        return view('admin.user.index',compact('users'));
+        return view('fakultas.index');
     }
 
     /**
@@ -23,7 +19,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        return view('fakultas.create');
     }
 
     /**
@@ -31,11 +27,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
-        User::create($request->all());
-
-        return redirect()->route('admin-index')->with('success','User Berhasil Ditambahkan');
-
+        //
     }
 
     /**
@@ -49,11 +41,9 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
-        $user = User::findOrFail($id);
-        
-        return view('admin.user.edit' , compact('user'));
+        //
     }
 
     /**
@@ -61,13 +51,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user = User::findOrFail($id);
-    
-       
-        $user->update($request->all());
-
-        
-        return redirect()->route('admin-index')->with('success','User Berhasil Diupdate');
+        //
     }
 
     /**
@@ -75,10 +59,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $user = User::findOrFail($id);
-
-        $user->delete();
-
-        return redirect()->route('admin-index')->with('success','User Berhasil Dihapus');
+        //
     }
 }

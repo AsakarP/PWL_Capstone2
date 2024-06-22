@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link">
 
-        <span class="brand-text font-weight-light">Web Pengajuan Beasiswa</span>
+        <span class="brand-text font-weight-bold">Web Pengajuan Beasiswa</span>
     </a>
 
     <!-- Sidebar -->
@@ -76,7 +76,19 @@
                         <a href={{ route('ab-index') }} class="nav-link">
                             <i class="nav-icon fas fa-newspaper"></i>
                             <p>
-                                Data Beasiswa Internal
+                                Data Beasiswa
+                            </p>
+                        </a>
+                    </li>
+                @endif
+
+                @if(Auth::user()->role == 2)
+                    {{-- Link ke Data Pengajuan Beasiswa --}}
+                    <li class="nav-item">
+                        <a href={{ route('fak-index') }} class="nav-link">
+                            <i class="nav-icon fas fa-newspaper"></i>
+                            <p>
+                                Data Periode
                             </p>
                         </a>
                     </li>
@@ -100,8 +112,8 @@
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();" class="nav-link">
-                        <i class="nav-icon fas fa-sign-out-alt"></i>
-                        <p>Logout</p>
+                        <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
+                        <p class="text-danger">Logout</p>
                         </a>
                     </form>
                 </li>

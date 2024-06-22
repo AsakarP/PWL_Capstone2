@@ -15,7 +15,5 @@ class Beasiswa extends Model
         'idBeasiswa',
         'namaBeasiswa',
         'jenisBeasiswa',
-        'periodeMulai',
-        'periodeTutup',
     ];
 }

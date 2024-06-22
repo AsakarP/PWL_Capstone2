@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Fakultas</h1>
+                        <h1 class="m-0">Data Periode</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Fakultas</li>
+                            <li class="breadcrumb-item active">Periode</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -24,27 +24,27 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="card p-4">
-                    @if(\Illuminate\Support\Facades\Session::has('success'))
+                    @if (\Illuminate\Support\Facades\Session::has('success'))
                         <div class="alert alert-success" role="alert">
                             {{ Session::get('success') }}
                         </div>
                     @endif
 
                     <div class="card-header">
-                        <a href="{{ route('fak-create') }}" role="button" class="btn btn-success">Tambah Fakultas</a>
+                        <a href="{{ route('fak-create') }}" role="button" class="btn btn-success">Tambah Periode</a>
                     </div>
                     <div class="card-body">
-                        <table id="table-dak" class="table table-striped">
+                        <table id="table-fak" class="table table-striped">
                             <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>ID</th>
-                                <th>Nama Fakultas</th>
-                                <th>Dekan</th>
-                            </tr>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Periode</th>
+                                    <th>Tanggal Mulai</th>
+                                    <th>Tanggal Berakhir</th>
+                                </tr>
                             </thead>
                             <tbody>
-                        @foreach ($faks as $fak )
+                                {{-- @foreach ($faks as $fak)
                         <tr>
                             <td>{{ $fak->id }}</td>
                             <td>{{ $fak->id_fakultas }}</td>
@@ -55,7 +55,7 @@
                                 <a href="{{ route('fak-delete', $user->id) }}" class="btn btn-danger del-button" role="button"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
-                        @endforeach
+                        @endforeach --}}
 
 
                             </tbody>
@@ -76,7 +76,6 @@
 @section('ExtraJS')
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script>
-    </script>
+    <script></script>
     <script src="{{ asset('plugins/sweetalert2/sweetalert2.js') }}"></script>
 @endsection

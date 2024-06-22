@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Create Beasiswa</h1>
+                        <h1 class="m-0">Tambah Beasiswa</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -19,13 +19,13 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-    
+
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
                 <div class="card p-4">
                     <div class="card-body">
-                        @if($errors->any())
+                        @if ($errors->any())
                             <div class="alert alert-danger">
                                 {{ implode('', $errors->all(':message')) }}
                             </div>
@@ -35,28 +35,24 @@
                             @csrf
                             <div class="form-group">
                                 <label>Nama Beasiswa</label>
-                                <input type="text" class="form-control" 
-                                       placeholder="Contoh: Beasiswa ABC" name="namaBeasiswa" required autofocus
-                                       maxlength="16">
+                                <input type="text" class="form-control" placeholder="Prestasi Akademik // Prestasi Non-Akademik // Ekonomi Lemah"
+                                    name="namaBeasiswa" required autofocus maxlength="25">
                             </div>
                             <div class="form-group">
                                 <label>Jenis Beasiswa</label>
-                                <select name="jenisBeasiswa" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                  <option selected="selected" value="akademik">Akademik</option>
-                                  <option value="non-akademik">non-Akademik</option>
-                                  <option value="el">EL</option>
+                                <select name="jenisBeasiswa" class="form-control select2 select2-danger"
+                                    data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                    <option selected="selected" value="Internal">Internal</option>
                                 </select>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Periode Mulai</label>
-                                <input type="date" class="form-control" 
-                                    name="periodeMulai" required >
+                                <input type="date" class="form-control" name="periodeMulai" required>
                             </div>
                             <div class="form-group">
                                 <label>Periode Tutup</label>
-                                <input type="date" class="form-control" 
-                                    name="periodeTutup" required >
-                            </div>
+                                <input type="date" class="form-control" name="periodeTutup" required>
+                            </div> --}}
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
@@ -75,7 +71,6 @@
 @section('ExtraJS')
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script>
-    </script>
+    <script></script>
     <script src="{{ asset('plugins/sweetalert2/sweetalert2.js') }}"></script>
 @endsection

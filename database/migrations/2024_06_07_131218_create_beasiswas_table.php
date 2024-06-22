@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('beasiswas', function (Blueprint $table) {
             $table->id('idBeasiswa');
             $table->string('namaBeasiswa');
-            $table->string('jenisBeasiswa')->default('prestasi');
-            $table->date('periodeMulai');
-            $table->date('periodeTutup');
+            $table->string('jenisBeasiswa')->default('Internal');
             $table->timestamps();
         });
     }

@@ -24,7 +24,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="card p-4">
-                    @if(\Illuminate\Support\Facades\Session::has('success'))
+                    @if (\Illuminate\Support\Facades\Session::has('success'))
                         <div class="alert alert-success" role="alert">
                             {{ Session::get('success') }}
                         </div>
@@ -36,28 +36,33 @@
                     <div class="card-body">
                         <table id="table-bea" class="table table-striped">
                             <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Beasiswa</th>
-                                <th>Jenis Beasiswa</th>
-                                <th>Periode Mulai</th>
-                                <th>Periode Tutup</th>
-                            </tr>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Periode</th>
+                                    <th>Jenis Beasiswa</th>
+                                    <th>Nama Beasiswa</th>
+                                    <th>Tanggal Mulai</th>
+                                    <th>Tanggal Berakhir</th>
+                                </tr>
                             </thead>
                             <tbody>
-                        @foreach ($beas as $bea)
-                        <tr>
-                            <td>{{ $bea->idBeasiswa }}</td>
-                            <td>{{ $bea->namaBeasiswa }}</td>
-                            <td>{{ $bea->jenisBeasiswa }}</td>
-                            <td>{{ $bea->periodeMulai }}</td>
-                            <td>{{ $bea->periodeTutup }}</td>
-                            <td>
-                                <a href="{{ route('ab-edit', $bea->idBeasiswa) }}" class="btn btn-warning" role="button"><i class="fas fa-edit"></i></a>
-                                <a href="{{ route('ab-delete', $bea->idBeasiswa) }}" class="btn btn-danger del-button" role="button"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
+                                @foreach ($beas as $bea)
+                                    <tr>
+                                        <td>{{ $bea->idBeasiswa }}</td>
+                                        <td></td>
+                                        <td>{{ $bea->jenisBeasiswa }}</td>
+                                        <td>{{ $bea->namaBeasiswa }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <a href="{{ route('ab-edit', $bea->idBeasiswa) }}" class="btn btn-warning"
+                                                role="button"><i class="fas fa-edit"></i></a>
+                                            <a href="{{ route('ab-delete', $bea->idBeasiswa) }}"
+                                                class="btn btn-danger del-button" role="button"><i
+                                                    class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -76,7 +81,6 @@
 @section('ExtraJS')
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script>
-    </script>
+    <script></script>
     <script src="{{ asset('plugins/sweetalert2/sweetalert2.js') }}"></script>
 @endsection
