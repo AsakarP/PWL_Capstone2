@@ -43,17 +43,20 @@
                                     <th>Nama Beasiswa</th>
                                     <th>Tanggal Mulai</th>
                                     <th>Tanggal Berakhir</th>
+                                    <th>Active</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($beas as $bea)
                                     <tr>
                                         <td>{{ $bea->idBeasiswa }}</td>
-                                        <td></td>
+                                        <td>{{ $bea->periode->namaperiode }}</td>
                                         <td>{{ $bea->jenisBeasiswa }}</td>
                                         <td>{{ $bea->namaBeasiswa }}</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ $bea->periode->tglmulai }}</td> 
+                                        <td>{{ $bea->periode->tglakhir }}</td>
+                                        <td>{{ $bea->periode->tglakhir }}</td> 
                                         <td>
                                             <a href="{{ route('ab-edit', $bea->idBeasiswa) }}" class="btn btn-warning"
                                                 role="button"><i class="fas fa-edit"></i></a>

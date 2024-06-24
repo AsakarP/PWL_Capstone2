@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_fakultas', function (Blueprint $table) {
+        Schema::create('data_prodis', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_fakultas')->unique()->default('1');
+            $table->string('kode_prodi')->unique()->default('TI123');
             $table->string('nama_fakultas');
-            $table->string('dekan');
+            $table->string('jenjang');
+            $table->string('akreditasi');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_fakultas');
+        Schema::dropIfExists('data_prodis');
     }
 };

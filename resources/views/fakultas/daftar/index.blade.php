@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Periode</h1>
+                        <h1 class="m-0">Daftar Pengajuan</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Periode</li>
+                            <li class="breadcrumb-item active">Daftar</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -29,35 +29,32 @@
                             {{ Session::get('success') }}
                         </div>
                     @endif
-
-                    <div class="card-header">
-                        <a href="{{ route('fak-create') }}" role="button" class="btn btn-success">Tambah Periode</a>
-                    </div>
                     <div class="card-body">
-                        <table id="table-fak" class="table table-striped">
+                        <table id="table-mas" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Periode</th>
-                                    <th>Tanggal Mulai</th>
-                                    <th>Tanggal Berakhir</th>
+                                    <th>Dokumen</th>
+                                    <th>IPK</th>
+                                    <th>Poin Portofolio</th>
+                                    <th>Status 1</th>
+                                    <th>Status 2</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($faks as $fak)
-                        <tr>
-                            <td>{{ $fak->id }}</td>
-                            <td>{{ $fak->id_fakultas }}</td>
-                            <td>{{ $fak->nama_fakultas }}</td>
-                            <td>{{ $fak->dekan}}</td>
-                            <td>
-                                <a href="{{ route('fak-edit', $user->id) }}" class="btn btn-warning" role="button"><i class="fas fa-edit"></i></a>
-                                <a href="{{ route('fak-delete', $user->id) }}" class="btn btn-danger del-button" role="button"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        @endforeach --}}
-
-
+                                @foreach ($appf as $app)
+                                    <tr>
+                                        <td><a href="{{ route('download', $app->id) }}">{{ $app->dokumen }}</a></td>
+                                        <td>{{ $app->ipk }}</td>
+                                        <td>{{ $app->poin }}</td>
+                                        <td>{{ $app->status1 }}</td>
+                                        <td>{{ $app->status2 }}</td>
+                                        <td>
+                                            <a href="{{ url('approve_apply', $app->id) }}" class="btn btn-success"><i class="fas fa-check"></i></a>
+                                            <a href="{{ url('deny_apply', $app->id) }}" class="btn btn-danger"><i class="fas fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

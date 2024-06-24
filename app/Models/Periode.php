@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mahasiswa extends Model
+class Periode extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'id',
-        'dokumen',
-        'ipk',
-        'poin',
-        'status1',
-        'status2'
+        'namaperiode',
+        'tglmulai',
+        'tglakhir',
     ];
 }

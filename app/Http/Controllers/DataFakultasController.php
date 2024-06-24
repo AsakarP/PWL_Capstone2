@@ -11,7 +11,7 @@ class DataFakultasController extends Controller
      */
     public function index()
     {
-        $fks = DataFakultas::orderBy('created_at', "DESC")->get();
+        $fks = DataFakultas::orderBy('created_at', "ASC")->get();
         return view('admin.fakultas.index',compact('fks'));
     }
 
@@ -30,7 +30,7 @@ class DataFakultasController extends Controller
     {
         DataFakultas::create($request->all());
 
-        return redirect()->route('afk-index')->with('success','Mata Kuliah Berhasil Ditambahkan');
+        return redirect()->route('afk-index')->with('success','Data Fakultas Berhasil Ditambahkan');
     }
 
     /**
@@ -46,9 +46,9 @@ class DataFakultasController extends Controller
      */
     public function edit(string $id)
     {
-        $fk = DataFakultas::findOrFail($id);
+        $fks = DataFakultas::findOrFail($id);
         
-        return view('admin.fakultas.edit' , compact('fk'));
+        return view('admin.fakultas.edit' , compact('fks'));
     }
 
     /**
@@ -56,13 +56,13 @@ class DataFakultasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $fk = DataFakultas::findOrFail($id);
+        $fks = DataFakultas::findOrFail($id);
     
        
-        $fk->update($request->all());
+        $fks->update($request->all());
 
         
-        return redirect()->route('afk-index')->with('success','User Berhasil Diupdate');
+        return redirect()->route('afk-index')->with('success','Data Fakultas Berhasil Diupdate');
     }
 
     /**
@@ -70,10 +70,10 @@ class DataFakultasController extends Controller
      */
     public function destroy(string $id)
     {
-        $fk = DataFakultas::findOrFail($id);
+        $fks = DataFakultas::findOrFail($id);
 
-        $fk->delete();
+        $fks->delete();
 
-        return redirect()->route('afk-index')->with('success','User Berhasil Dihapus');
+        return redirect()->route('afk-index')->with('success','Data Fakultas Berhasil Dihapus');
     }
 }

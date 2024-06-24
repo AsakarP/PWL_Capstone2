@@ -32,26 +32,26 @@
                         </div>
                     @endif
 
-                        <form method="Post" action="{{ route('afk-update', ['id' => $fk->id]) }}">
+                        <form method="Post" action="{{ route('afk-update', ['id' => $fks->id]) }}">
                             @csrf
                             @method('patch')
                             <div class="form-group">
                                 <label for="no-kk">ID Fakultas</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: 123" name="id" required autofocus
-                                       maxlength="16" value="{{ $fk->id_fakultas }}">
+                                       placeholder="Contoh: 123" name="id_fakultas" required autofocus
+                                       maxlength="16" value="{{ $fks->id_fakultas }}">
                             </div>
                             <div class="form-group">
                                 <label>Nama Fakultas</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: Psikologi" name="name" required 
-                                       maxlength="32" value="{{ $fk->nama_fakultas }}">
+                                       placeholder="Contoh: Psikologi" name="nama_fakultas" required 
+                                       maxlength="32" value="{{ $fks->nama_fakultas }}">
                             </div>
                             <div class="form-group">
                                 <label>Dekan</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: John Doe" name="name" required 
-                                       maxlength="32" value="{{ $fk->dekan }}">
+                                       placeholder="Contoh: John Doe" name="dekan" required 
+                                       maxlength="32" value="{{ $fks->dekan }}">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

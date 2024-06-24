@@ -2,16 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
-class FakultasController extends Controller
+class ProdiApprovalController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('fakultas.index');
+        $appf = Mahasiswa::orderBy('created_at', "ASC")->get();
+        return view('prodi.daftar.index',compact('appf'));
+    }
+
+    public function proa_approve_apply($id)
+    {
+        $data = Mahasiswa::find($id);
+
+        $data->status2='Approved';
+
+        $data->save();
+
+        return redirect()->back();
+    }
+
+    public function proa_deny_apply($id)
+    {
+        $data = Mahasiswa::find($id);
+
+        $data->status2='Denied';
+
+        $data->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -19,7 +43,7 @@ class FakultasController extends Controller
      */
     public function create()
     {
-        return view('fakultas.create');
+        //
     }
 
     /**

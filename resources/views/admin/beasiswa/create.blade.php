@@ -34,8 +34,19 @@
                         <form method="post" action="{{ route('ab-store') }}">
                             @csrf
                             <div class="form-group">
+                                <label>Periode</label>
+                                <select name="periode_id" class="form-control select2 select2-danger"
+                                    data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                    @foreach ($pers as $per)
+                                        <option selected="selected" value="{{ $per->id }}">{{ $per->namaperiode }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label>Nama Beasiswa</label>
-                                <input type="text" class="form-control" placeholder="Prestasi Akademik // Prestasi Non-Akademik // Ekonomi Lemah"
+                                <input type="text" class="form-control"
+                                    placeholder="Prestasi Akademik // Prestasi Non-Akademik // Ekonomi Lemah"
                                     name="namaBeasiswa" required autofocus maxlength="25">
                             </div>
                             <div class="form-group">
@@ -45,14 +56,6 @@
                                     <option selected="selected" value="Internal">Internal</option>
                                 </select>
                             </div>
-                            {{-- <div class="form-group">
-                                <label>Periode Mulai</label>
-                                <input type="date" class="form-control" name="periodeMulai" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Periode Tutup</label>
-                                <input type="date" class="form-control" name="periodeTutup" required>
-                            </div> --}}
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

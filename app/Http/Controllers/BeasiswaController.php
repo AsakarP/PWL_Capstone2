@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Beasiswa;
+use App\Models\Periode;
 use Illuminate\Http\Request;
 
 class BeasiswaController extends Controller
@@ -12,7 +13,8 @@ class BeasiswaController extends Controller
     public function index()
     {
         $beas = Beasiswa::orderBy('created_at', "ASC")->get();
-        return view('admin.beasiswa.index',compact('beas'));
+        $pers = Periode::orderBy('created_at', "ASC")->get();
+        return view('admin.beasiswa.index',compact('beas','pers'));
     }
 
     /**
@@ -20,7 +22,8 @@ class BeasiswaController extends Controller
      */
     public function create()
     {
-        return view('admin.beasiswa.create');
+        $pers = Periode::orderBy('created_at', "ASC")->get();
+        return view('admin.beasiswa.create',compact('pers'));
     }
 
     /**
@@ -28,10 +31,12 @@ class BeasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'namaBeasiswa' => 'required|string|max:25',
-            'jenisBeasiswa' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'idBeasiswa',
+        //     'namaBeasiswa' => 'required|string|max:25',
+        //     'jenisBeasiswa' => 'required|string',
+        //     'periode_id' => 'required|exists:periodes,id',
+        // ]);
     
         Beasiswa::create($request->all());
     
@@ -52,13 +57,17 @@ class BeasiswaController extends Controller
      */
     public function edit(Request $request, $idBeasiswa)
     {
-        $bea = Beasiswa::find($idBeasiswa);
+        // $beas = Beasiswa::find($idBeasiswa);
+        // $pers = Periode::orderBy('created_at', "ASC")->get();
     
-        if (!$bea) {
-            return redirect()->back()->with('error', 'Beasiswa tidak ada');
-        }
+        // if (!$beas) {
+        //     return redirect()->back()->with('error', 'Beasiswa tidak ada');
+        // }
+
+        $beas = Beasiswa::findOrFail($idBeasiswa);
+        $pers = Periode::orderBy('created_at', "ASC")->get();
     
-        return view('admin.beasiswa.edit', compact('bea'));
+        return view('admin.beasiswa.edit', compact('beas','pers'));
     }
     
 
@@ -68,13 +77,14 @@ class BeasiswaController extends Controller
     
     public function update(Request $request, string $idBeasiswa)
     {
-        $request->validate([
-            'namaBeasiswa' => 'required|string|max:25',
-            'jenisBeasiswa' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'namaBeasiswa' => 'required|string|max:25',
+        //     'jenisBeasiswa' => 'required|string',
+        // ]);
     
-        $bea = Beasiswa::findOrFail($idBeasiswa);
-        $bea->update($request->all());
+        $beas = Beasiswa::findOrFail($idBeasiswa);
+
+        $beas->update($request->all());
     
         return redirect()->route('ab-index')->with('success', 'Beasiswa Berhasil Diupdate');
     }
@@ -85,13 +95,14 @@ class BeasiswaController extends Controller
      */
     public function destroy(Request $request, $idBeasiswa)
     {
-        $bea = Beasiswa::find($idBeasiswa);
+        // $beas = Beasiswa::find($idBeasiswa);
     
-        if (!$bea) {
-            return redirect()->back()->with('error', 'Beasiswa tidak ada');
-        }
+        // if (!$beas) {
+        //     return redirect()->back()->with('error', 'Beasiswa tidak ada');
+        // }
+        $beas = Beasiswa::findOrFail($idBeasiswa);
 
-        $bea->delete();
+        $beas->delete();
 
         return redirect()->route('ab-index')->with('success','Beasiswa Berhasil Dihapus');
     }

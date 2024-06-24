@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nrp')->unique()->default('2272000');
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('role')->default(4); //1 = Admin // 2 = Prodi // 3 = Mahasiswa
+            $table->string('role')->default('Mahasiswa'); //1 = Admin // 2 = Fakultas // 3 = Prodi// 4 = Mahasiswa
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

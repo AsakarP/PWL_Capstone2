@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Periode;
 use Illuminate\Http\Request;
 
-class ProdiController extends Controller
+class PeriodeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class ProdiController extends Controller
     public function index()
     {
         $period = Periode::orderBy('created_at', "ASC")->get();
-        return view('prodi.periode.index',compact('period'));
+        return view('fakultas.periode.index',compact('period'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ProdiController extends Controller
      */
     public function create()
     {
-        return view('prodi.periode.create');
+        return view('fakultas.periode.create');
     }
 
     /**
@@ -38,13 +38,13 @@ class ProdiController extends Controller
     
         Periode::create($request->all());
     
-        return redirect()->route('prop-index')->with('success', 'Periode Berhasil Ditambahkan');
+        return redirect()->route('fak-index')->with('success', 'Periode Berhasil Ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Periode $periode)
     {
         //
     }
@@ -52,7 +52,7 @@ class ProdiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $per = Periode::find($id);
     
@@ -60,7 +60,7 @@ class ProdiController extends Controller
             return redirect()->back()->with('error', 'Periode tidak ada');
         }
     
-        return view('prodi.periode.edit', compact('per'));
+        return view('fakultas.periode.edit', compact('per'));
     }
 
     /**
@@ -77,13 +77,13 @@ class ProdiController extends Controller
         $per = Periode::findOrFail($id);
         $per->update($request->all());
     
-        return redirect()->route('prop-index')->with('success', 'Periode Berhasil Diupdate');
+        return redirect()->route('fak-index')->with('success', 'Periode Berhasil Diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $per = Periode::find($id);
     
@@ -95,6 +95,6 @@ class ProdiController extends Controller
 
         
 
-        return redirect()->route('prop-index')->with('success', 'Periode Berhasil Dihapus');
+        return redirect()->route('fak-index')->with('success', 'Periode Berhasil Dihapus');
     }
 }

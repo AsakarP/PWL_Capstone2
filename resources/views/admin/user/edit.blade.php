@@ -54,10 +54,13 @@
                                        maxlength="32" value="{{ $user->email }}">
                             </div>
                             <div class="form-group">
-                                <label>Kode Role</label>
-                                <input type="text" class="form-control" 
-                                       placeholder="1 = Admin // 2 = Fakultas // 3 = Prodi // 3 = Mahasiswa" name="role" required autofocus
-                                       maxlength="1" value="{{ $user->role }}">
+                                <label>Role</label>
+                                <select name="role" class="form-control select2 select2-danger"
+                                    data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                    <option selected="selected"value="Fakultas">Fakultas</option>
+                                    <option value="Prodi">Prodi</option>
+                                    <option value="Mahasiswa">Mahasiswa</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Password</label>

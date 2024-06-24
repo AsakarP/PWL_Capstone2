@@ -24,42 +24,43 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="card p-4">
-                    @if(\Illuminate\Support\Facades\Session::has('success'))
+                    @if (\Illuminate\Support\Facades\Session::has('success'))
                         <div class="alert alert-success" role="alert">
                             {{ Session::get('success') }}
                         </div>
                     @endif
 
                     <div class="card-header">
-                        <a href="{{ route('aps-create') }}" role="button" class="btn btn-success">Tambah Prodi</a>
+                        <a href="{{ route('ap-create') }}" role="button" class="btn btn-success">Tambah Prodi</a>
                     </div>
                     <div class="card-body">
                         <table id="table-ps" class="table table-striped">
                             <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Fakultas</th>
-                                <th>Program Studi</th>
-                                <th>Akreditasi</th>
-                                <th>Rektor</th>
-                            </tr>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Kode Prodi</th>
+                                    <th>Fakultas</th>
+                                    <th>Jenjang Pendidikan</th>
+                                    <th>Akreditasi</th>
+                                </tr>
                             </thead>
                             <tbody>
 
-                        @foreach ($pss as $ps )
-                        <tr>
-                            <td>{{ $ps->id }}</td>
-                            <td>{{ $ps->Nama}}</td>
-                            <td>{{ $ps->prodi}}</td>
-                            <td>{{ $ps->akreditasi}}</td>
-                            <td>{{ $ps->rektor}}</td>
-                            <td>
-                                <a href="{{ route('aps-edit', $ps->id) }}" class="btn btn-warning" role="button"><i class="fas fa-edit"></i></a>
-                                <a href="{{ route('aps-delete', $ps->id) }}" class="btn btn-danger del-button" role="button"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
-
+                                @foreach ($pss as $ps)
+                                    <tr>
+                                        <td>{{ $ps->id }}</td>
+                                        <td>{{ $ps->kode_prodi }}</td>
+                                        <td>{{ $ps->nama_fakultas }}</td>
+                                        <td>{{ $ps->jenjang }}</td>
+                                        <td>{{ $ps->akreditasi }}</td>
+                                        <td>
+                                            <a href="{{ route('ap-edit', $ps->id) }}" class="btn btn-warning"
+                                                role="button"><i class="fas fa-edit"></i></a>
+                                            <a href="{{ route('ap-delete', $ps->id) }}" class="btn btn-danger del-button"
+                                                role="button"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
                             </tbody>
                         </table>
@@ -79,7 +80,6 @@
 @section('ExtraJS')
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script>
-    </script>
+    <script></script>
     <script src="{{ asset('plugins/sweetalert2/sweetalert2.js') }}"></script>
 @endsection

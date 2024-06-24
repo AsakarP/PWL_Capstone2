@@ -13,10 +13,11 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <!-- Extra CSS -->
+    <link href="{{ asset('resources/css/styles.css') }}" rel="stylesheet">
     @yield('ExtraCSS')
 </head>
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
+<body class="hold-transition sidebar-mini" style="background-color: #2980b9">
+<div class="wrapper" >
 
     <!-- Navbar -->
     @include('layouts.navbar')

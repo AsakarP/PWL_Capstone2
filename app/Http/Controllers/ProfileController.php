@@ -3,17 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Mahasiswa;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
+    public function index(){
+        $users = User::get();
+
+        return view('profile.index', compact('users'));
+    }
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -24,15 +31,23 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request, $id): RedirectResponse
     {
-        $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'nullable',
+        ])->validate();
+    
+        $users = User::find($id);
+    
+        $users->nama       = $request->nama;
+        $users->email      = $request->email;
+        if($request->password){
+            $data['password'] = Hash::make($request->password);
         }
 
-        $request->user()->save();
+        $users->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
@@ -46,11 +61,11 @@ class ProfileController extends Controller
             'password' => ['required', 'current_password'],
         ]);
 
-        $user = $request->user();
+        $users = $request->user();
 
         Auth::logout();
 
-        $user->delete();
+        $users->delete();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

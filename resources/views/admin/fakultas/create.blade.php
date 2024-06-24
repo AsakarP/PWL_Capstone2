@@ -37,19 +37,19 @@
                             <div class="form-group">
                                 <label for="no-kk">ID Fakultas</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: 123" name="nrp" required autofocus
+                                       placeholder="Contoh: 123" name="id_fakultas" required autofocus
                                        maxlength="16">
                             </div>
                             <div class="form-group">
                                 <label>Nama Fakultas</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: Psikologi" name="name" required autofocus
+                                       placeholder="Contoh: Psikologi" name="nama_fakultas" required autofocus
                                        maxlength="32">
                             </div>
                             <div class="form-group">
                                 <label>Dekan</label>
                                 <input type="text" class="form-control" 
-                                       placeholder="Contoh: John Doe" name="name" required autofocus
+                                       placeholder="Contoh: John Doe" name="dekan" required autofocus
                                        maxlength="32">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>

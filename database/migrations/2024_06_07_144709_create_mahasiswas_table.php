@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
-            $table->id('noMas');
-            $table->integer('NRP');
-            $table->string('Nama');
-            $table->string('Dokumen');
+            $table->id('id');
+            $table->string('dokumen');
+            $table->string('ipk');
+            $table->string('poin');
+            $table->string('status1')->default('Processed');
+            $table->string('status2')->default('Processed');
             $table->timestamps();
         });
     }

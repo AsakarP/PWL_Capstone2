@@ -1,23 +1,35 @@
 @extends('layouts.master')
 
 @section('web-content')
+
+
+    <!-- Background with shapes -->
+    <div class="bg-shapes">
+        <!-- Insert shapes and stars dynamically using Blade loops or static HTML -->
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
+    <!-- Content Wrapper -->
     <div class="content-wrapper">
+
         <!-- Content Header (Page header) -->
-        <div class="content-header">
+        <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        @if(Auth::user()->role == 1)
+                        @if(Auth::user()->role == 'Admin')
                             <h1 class="m-0">Selamat Datang Admin-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
-                        @endif
-                        @if(Auth::user()->role == 2)
+                        @elseif(Auth::user()->role == 'Fakultas')
                             <h1 class="m-0">Selamat Datang Fakultas-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
-                        @endif
-                        @if(Auth::user()->role == 3)
-                        <h1 class="m-0">Selamat Datang Prodi-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
-                        @endif
-                        @if(Auth::user()->role == 4)
-                        <h1 class="m-0">Selamat Datang Mahasiswa-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
+                        @elseif(Auth::user()->role == 'Prodi')
+                            <h1 class="m-0">Selamat Datang Prodi-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
+                        @elseif(Auth::user()->role == 'Mahasiswa')
+                            <h1 class="m-0">Selamat Datang Mahasiswa-{{ \Illuminate\Support\Facades\Auth::user()->name }}</h1>
                         @endif
                     </div><!-- /.col -->
                     <div class="col-sm-6">
@@ -28,28 +40,18 @@
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
-        </div>
+        </section>
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <div class="content">
+        <section class="content">
             <div class="container-fluid">
-
+                <!-- Your main content goes here -->
             </div><!-- /.container-fluid -->
-        </div>
+        </section>
         <!-- /.content -->
+
     </div>
-@endsection
+    <!-- /.content-wrapper -->
 
-@section('ExtraCSS')
-    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.css') }}">
-@endsection
-
-@section('ExtraJS')
-    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script>
-    </script>
-    <script src="{{ asset('plugins/sweetalert2/sweetalert2.js') }}"></script>
 @endsection

@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Edit Program Studi</h1>
+                        <h1 class="m-0">Edit Data Program Studi</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -19,39 +19,41 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-    
+
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
                 <div class="card p-4">
                     <div class="card-body">
 
-                    @if($errors->any())
-                        <div class="alert alert-danger">
-                            {{ implode('', $errors->all(':message')) }}
-                        </div>
-                    @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                {{ implode('', $errors->all(':message')) }}
+                            </div>
+                        @endif
 
-                        <form method="Post" action="{{ route('aps-update', ['id' => $ps->id]) }}">
+                        <form method="Post" action="{{ route('ap-update', ['id' => $pss->id]) }}">
                             @csrf
                             @method('patch')
                             <div class="form-group">
-                                <label for="no-kk">Program Studi</label>
-                                <input type="text" class="form-control" 
-                                       placeholder="Contoh: Desain interior" name="prodi" required autofocus
-                                       maxlength="100" value="{{ $ps->prodi }}">
+                                <label for="no-kk">Kode Prodi</label>
+                                <input type="text" class="form-control" placeholder="Contoh: TI123" name="kode_prodi"
+                                    required autofocus maxlength="10" value="{{ $pss->kode_prodi }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Nama Fakultas</label>
+                                <input type="text" class="form-control" placeholder="Contoh: Psikologi"
+                                    name="nama_fakultas" required maxlength="32" value="{{ $pss->nama_fakultas }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Jenjang</label>
+                                <input type="text" class="form-control" placeholder="Contoh: S1" name="jenjang" required
+                                    maxlength="10" value="{{ $pss->jenjang }}">
                             </div>
                             <div class="form-group">
                                 <label>Akreditasi</label>
-                                <input type="text" class="form-control" 
-                                       placeholder="Contoh: A" name="Akreditasi" required 
-                                       maxlength="1" value="{{ $ps->akreditasi }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Rektor</label>
-                                <input type="text" class="form-control" 
-                                       placeholder="Contoh: Alan Smith" name="name" required 
-                                       maxlength="120" value="{{ $ps->rektor }}">
+                                <input type="text" class="form-control" placeholder="Contoh: A" name="akreditasi"
+                                    required maxlength="10" value="{{ $pss->akreditasi }}">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
@@ -72,7 +74,6 @@
 @section('ExtraJS')
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script>
-    </script>
+    <script></script>
     <script src="{{ asset('plugins/sweetalert2/sweetalert2.js') }}"></script>
 @endsection

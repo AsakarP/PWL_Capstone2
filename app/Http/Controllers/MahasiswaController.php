@@ -15,7 +15,7 @@ class MahasiswaController extends Controller
     {
         $beas = Beasiswa::orderBy('created_at', "ASC")->get();
         $mas = Mahasiswa::orderBy('created_at', "ASC")->get();
-        return view('mahasiswa.index',compact('mas','beas'));
+        return view('mahasiswa.pengajuan.index',compact('mas','beas'));
     }
 
     /**
@@ -23,7 +23,9 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('mahasiswa.create');
+        $beas = Beasiswa::orderBy('created_at', "ASC")->get();
+        $mas = Mahasiswa::orderBy('created_at', "ASC")->get();
+        return view('mahasiswa.pengajuan.create',compact('beas','mas'));
     }
 
     /**
@@ -31,11 +33,31 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        Beasiswa::create($request->all());
-        Mahasiswa::create($request->all());
-
-        return redirect()->route('mas-index')->with('success','Pengajuan Berhasil Ditambahkan');
+        $request->validate([
+            'dokumen' => 'required|file', // adjust the validation rules as needed
+            'ipk' => 'required|string',
+            'poin' => 'required|string',
+        ]);
+    
+        if ($request->hasFile('dokumen')) {
+            $file = $request->file('dokumen');
+            $filePath = $file->store('dokumen', 'public');
+            
+            Mahasiswa::create([
+                'dokumen' => $filePath,
+                'ipk' => $request->input('ipk'),
+                'poin' => $request->input('poin'),
+                'status1' => 'Processed',
+                'status2' => 'Processed',
+                // other fields...
+            ]);
+    
+            return redirect()->route('mab-index')->with('success', 'Pengajuan Berhasil Ditambahkan');
+        }
+    
+        return redirect()->back()->with('error', 'Dokumen is required.');
     }
+    
 
     /**
      * Display the specified resource.
@@ -48,45 +70,25 @@ class MahasiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, $nomas)
+    public function edit(Request $request, $id)
     {
-        $mas = Mahasiswa::find($nomas);
-    
-        if (!$mas) {
-            return redirect()->back()->with('error', 'Pengajuan gagal');
-        }
-    
-        return view('admin.beasiswa.edit', compact('mas'));
+        
     }
     
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $nomas)
+    public function update(Request $request, string $id)
     {
-        $mas = Mahasiswa::find($nomas);
-    
-       
-        $mas->update($request->all());
-
         
-        return redirect()->route('mab-index')->with('success','Pengajuan Berhasil Diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, $nomas)
+    public function destroy(Request $request, $id)
     {
-        $bea = Beasiswa::find($nomas);
-    
-        if (!$bea) {
-            return redirect()->back()->with('error', 'Beasiswa tidak ada');
-        }
-
-        $bea->delete();
-
-        return redirect()->route('mab-index')->with('success','Beasiswa Berhasil Dihapus');
+       
     }
 }

@@ -1,0 +1,48 @@
+/* styles.css */
+.bg-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(to bottom, #2980b9, #2c3e50);
+    opacity: 0.8; /* Adjust opacity as needed */
+}
+
+/* Animation to move the shapes */
+@keyframes moveShapes {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* Style for circle shapes */
+.shape {
+    position: absolute;
+    width: 50px; /* Adjust size of the shape */
+    height: 50px; /* Adjust size of the shape */
+    background-color: rgba(255, 255, 255, 0.6); /* Adjust color and opacity */
+    border-radius: 50%; /* Creates a circle */
+    animation: moveShapes 10s linear infinite; /* Adjust animation duration */
+}
+
+/* Style for star shapes */
+.star {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 40px solid rgba(255, 255, 255, 0.6); /* Adjust color and opacity */
+    transform: rotate(35deg);
+    animation: moveShapes 8s linear infinite alternate; /* Adjust animation duration */
+}
+
+/* Positioning for individual shapes */
+.shape:nth-child(1) { top: 20%; left: 30%; }
+.shape:nth-child(2) { top: 50%; left: 70%; }
+.shape:nth-child(3) { top: 80%; left: 50%; }
+
+.star:nth-child(4) { top: 40%; left: 50%; }
+.star:nth-child(5) { top: 60%; left: 20%; }
+.star:nth-child(6) { top: 70%; left: 80%; }

@@ -10,7 +10,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a href="#" class="d-block">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
+                <a href="{{ route('profile-index') }}" class="d-block">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
             </div>
         </div>
 
@@ -43,7 +43,7 @@
                 </li>
 
                 {{-- Role Admin --}}
-                @if(Auth::user()->role == 1)
+                @if(Auth::user()->role == 'Admin')
                     {{-- Link ke Data User --}}
                     <li class="nav-item">
                         <a href="{{ route('admin-index') }}" class="nav-link">
@@ -64,7 +64,7 @@
                     </li>
                     {{-- Link ke Data Prodi --}}
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('ap-index') }}" class="nav-link">
                             <i class="nav-icon fas fa-graduation-cap"></i>
                             <p>
                                 Data Prodi
@@ -81,8 +81,9 @@
                         </a>
                     </li>
                 @endif
-
-                @if(Auth::user()->role == 2)
+                
+                {{-- Role Fakultas --}}
+                @if(Auth::user()->role == 'Fakultas')
                     {{-- Link ke Data Pengajuan Beasiswa --}}
                     <li class="nav-item">
                         <a href={{ route('fak-index') }} class="nav-link">
@@ -92,16 +93,56 @@
                             </p>
                         </a>
                     </li>
+                    {{-- Link ke  --}}
+                    <li class="nav-item">
+                        <a href={{ route('fad-index') }} class="nav-link">
+                            <i class="nav-icon fas fa-graduation-cap"></i>
+                            <p>
+                                Daftar Mahasiswa
+                            </p>
+                        </a>
+                    </li>
+                @endif
+                
+                {{-- Role Prodi --}}
+                @if(Auth::user()->role == 'Prodi')
+                    {{-- Link ke Data Pengajuan Beasiswa --}}
+                    <li class="nav-item">
+                        <a href={{ route('prop-index') }} class="nav-link">
+                            <i class="nav-icon fas fa-newspaper"></i>
+                            <p>
+                                Data Periode
+                            </p>
+                        </a>
+                    </li>
+                    {{-- Link ke  --}}
+                    <li class="nav-item">
+                        <a href={{ route('proa-index') }} class="nav-link">
+                            <i class="nav-icon fas fa-graduation-cap"></i>
+                            <p>
+                                Daftar Mahasiswa
+                            </p>
+                        </a>
+                    </li>
                 @endif
 
                 {{-- Role Mahasiswa --}}
-                @if(Auth::user()->role == 4)
+                @if(Auth::user()->role == 'Mahasiswa')
                     {{-- Link ke Data Pengajuan Beasiswa --}}
                     <li class="nav-item">
                         <a href={{ route('mab-index') }} class="nav-link">
                             <i class="nav-icon fas fa-newspaper"></i>
                             <p>
                                 Pengajuan Beasiswa
+                            </p>
+                        </a>
+                    </li>
+                    {{-- Link ke Data Pengajuan Beasiswa --}}
+                    <li class="nav-item">
+                        <a href={{ route('mah-index') }} class="nav-link">
+                            <i class="nav-icon fas fa-history"></i>
+                            <p>
+                                History Pengajuan
                             </p>
                         </a>
                     </li>

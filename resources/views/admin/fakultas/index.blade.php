@@ -24,7 +24,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="card p-4">
-                    @if(\Illuminate\Support\Facades\Session::has('success'))
+                    @if (\Illuminate\Support\Facades\Session::has('success'))
                         <div class="alert alert-success" role="alert">
                             {{ Session::get('success') }}
                         </div>
@@ -36,29 +36,28 @@
                     <div class="card-body">
                         <table id="table-kk" class="table table-striped">
                             <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>ID Fakultas</th>
-                                <th>Nama Fakultas</th>
-                                <th>Dekan</th>
-                            </tr>
+                                <tr>
+                                    <th>No</th>
+                                    <th>ID Fakultas</th>
+                                    <th>Nama Fakultas</th>
+                                    <th>Dekan</th>
+                                </tr>
                             </thead>
                             <tbody>
-
-                        @foreach ($fks as $fk )
-                        <tr>
-                            <td>{{ $fk->id }}</td>
-                            <td>{{ $fk->id_fakultas}}</td>
-                            <td>{{ $fk->nama_fakultas}}</td>
-                            <td>{{ $fk->dekan}}</td>
-                            <td>
-                                <a href="{{ route('admin-edit', $fk->id) }}" class="btn btn-warning" role="button"><i class="fas fa-edit"></i></a>
-                                <a href="{{ route('admin-delete', $fk->id) }}" class="btn btn-danger del-button" role="button"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
-
-
+                                @foreach ($fks as $fk)
+                                    <tr>
+                                        <td>{{ $fk->id }}</td>
+                                        <td>{{ $fk->id_fakultas }}</td>
+                                        <td>{{ $fk->nama_fakultas }}</td>
+                                        <td>{{ $fk->dekan }}</td>
+                                        <td>
+                                            <a href="{{ route('afk-edit', $fk->id) }}" class="btn btn-warning"
+                                                role="button"><i class="fas fa-edit"></i></a>
+                                            <a href="{{ route('afk-delete', $fk->id) }}" class="btn btn-danger del-button"
+                                                role="button"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -77,7 +76,6 @@
 @section('ExtraJS')
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script>
-    </script>
+    <script></script>
     <script src="{{ asset('plugins/sweetalert2/sweetalert2.js') }}"></script>
 @endsection

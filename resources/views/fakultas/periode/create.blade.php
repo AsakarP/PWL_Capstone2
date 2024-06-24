@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Create Polling</h1>
+                        <h1 class="m-0">Tambah Periode</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Polling</li>
+                            <li class="breadcrumb-item active">Create Periode</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -32,30 +32,29 @@
                             </div>
                         @endif
 
-                        <form method="post" action="{{ route('poll-store') }}">
+                        <form method="post" action="{{ route('fak-store') }}">
                             @csrf
                             <div class="form-group">
-                                <label>Periode</label>
-                                <input type="text" class="form-control" placeholder="Contoh: 2020/2021" name="periode"
-                                    required autofocus maxlength="10">
+                                <label for="">Periode</label>
+                                <input type="text" class="form-control" placeholder="Contoh: Ganjil 2024/2025"
+                                    name="namaperiode" required autofocus maxlength="16">
                             </div>
                             <div class="form-group">
-                                <label>Mulai Polling</label>
-                                <input type="date" class="form-control" name="mulai_polling" required autofocus>
+                                <label>Tanggal Mulai</label>
+                                <input type="date" class="form-control" name="tglmulai" required autofocus>
                             </div>
                             <div class="form-group">
-                                <label>Akhir Polling</label>
-                                <input type="date" class="form-control" placeholder="Contoh: 2" name="akhir_polling"
-                                    required autofocus>
+                                <label>Tanggal Berakhir</label>
+                                <input type="date" class="form-control" name="tglakhir" required autofocus>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-
                     </div>
+                    </form>
                 </div>
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content -->
+            </div>
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
     </div>
 @endsection
 
